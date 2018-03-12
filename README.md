@@ -14,11 +14,14 @@ docker build -t wikidoc .
 WIKIDOC_CONTAINER=$(docker run -t -d  wikidoc)
 ```
 
-3. Clone the repo and copy to 
+3. Clone the repo
 ```
 git clone https://github.com/wekan/wekan.wiki.git
 # Note: Home.md must be configured as per https://github.com/jobisoft/wikidoc#how-it-works
+```
 
+4. Copy to the container
+```
 docker cp ./wekan.wiki/ $WIKIDOC_CONTAINER:/usr/src/app/wiki
 ```
 
@@ -29,8 +32,4 @@ docker exec -ti $WIKIDOC_CONTAINER ./wikidoc.py wkhtmltopdf wiki
 5. Fetch the file
 ```
 docker cp $WIKIDOC_CONTAINER:/usr/src/app/wiki/documentation.pdf ./documentation.pdf
-``
-
-
-
-
+```
