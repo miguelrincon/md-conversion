@@ -1,0 +1,740 @@
+<html>
+ <head>
+  <STYLE type='text/css'>
+	html { font-family: Verdana, Geneva, sans-serif; font-size: 13px; }
+	.covertitle { padding-top: 40%; text-align: right; font-size: 40px; }
+	.generated { font-size: 12px; }
+
+	table { border-collapse: collapse;  margin: 1em auto 1em auto; width: 90%; border: 1px solid #ccc; }
+	tr td:first-child { border-right: 1px solid #ccc; width: 2.5cm !important;  }
+	table tr:first-child { background-color: #ddd; }
+	table td { font-family: Verdana,Geneva,sans-serif; font-size: 8pt; vertical-align: top; padding: 5px; }
+
+	h1 { page-break-before: always; font-size: 26.6px; }
+	h2 { margin-top: 3ex; font-size: 20px; }
+	h3 { margin-top: 3ex; 13.3px}
+
+	.breakbefore { page-break-before: always; }
+	.wiki_only { display: none; }
+  </STYLE>
+ </head>
+ <body>
+<!-- WIKIDOC CONFIG
+--filename documentation.pdf
+--page-size A4
+--margin-top 2cm
+--margin-left 2cm
+--margin-bottom 2cm
+--margin-right 2cm
+--footer-font-name Verdana
+--footer-font-size 6
+--footer-spacing 10
+--footer-right [page]
+WIKIDOC CONFIG -->
+
+<!-- WIKIDOC HTMLHEAD
+<html>
+ <head>
+  <STYLE type='text/css'>
+    html { font-family: Verdana, Geneva, sans-serif; font-size: 13px; }
+    .covertitle { padding-top: 40%; text-align: right; font-size: 40px; }
+    .generated { font-size: 12px; }
+
+    table { border-collapse: collapse;  margin: 1em auto 1em auto; width: 90%; border: 1px solid #ccc; }
+    tr td:first-child { border-right: 1px solid #ccc; width: 2.5cm !important;  }
+    table tr:first-child { background-color: #ddd; }
+    table td { font-family: Verdana,Geneva,sans-serif; font-size: 8pt; vertical-align: top; padding: 5px; }
+
+    h1 { page-break-before: always; font-size: 26.6px; }
+    h2 { margin-top: 3ex; font-size: 20px; }
+    h3 { margin-top: 3ex; 13.3px}
+
+    .breakbefore { page-break-before: always; }
+    .wiki_only { display: none; }
+  </STYLE>
+ </head>
+ <body>
+WIKIDOC HTMLHEAD -->
+
+<!-- WIKIDOC HTMLFOOT
+ </body>
+</html>
+WIKIDOC HTMLFOOT -->
+
+<!-- the following WIKIDOC comments are optional -->
+
+<!-- WIKIDOC COVER
+<div class='covertitle'><b>Example</b> Documentation<br><span class='generated'>generated from github wiki: 02.03.2018</span></div>
+WIKIDOC COVER -->
+
+<!-- WIKIDOC TOCXSL
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:outline="http://wkhtmltopdf.org/outline"
+                xmlns="http://www.w3.org/1999/xhtml">
+  <xsl:output doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+              doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+              indent="yes" />
+  <xsl:template match="outline:outline">
+    <html>
+      <head>
+        <title>Contents</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style>
+          h1 {
+            text-align: left;
+            font-size: 26.6px;
+            font-family: verdana;
+          }
+          div {border-bottom: 1px dashed rgb(200,200,200);}
+          span {float: right;}
+          li {list-style: none;}
+          ul {
+            font-size: 13px;
+            font-family: verdana;
+          }
+          ul ul {font-size: 85%; }
+          ul {padding-left: 0em; }
+          ul ul {padding-left: 1em;}
+          a {text-decoration:none; color: black;}
+          ul.toplevel li { margin-bottom: 1em;  }
+          ul.sublevels li { margin-bottom: 0em;  }
+          ul li:last-child { margin-bottom: 1em; }
+        </style>
+      </head>
+      <body>
+        <h1>Contents</h1>
+        <ul class="toplevel"><xsl:apply-templates select="outline:item/outline:item"/></ul>
+      </body>
+    </html>
+  </xsl:template>
+  <xsl:template match="outline:item">
+     <li>
+      <xsl:if test="(@title!='') and (@title!='Contents')">
+        <div>
+          <a>
+            <xsl:if test="@link">
+              <xsl:attribute name="href"><xsl:value-of select="@link"/></xsl:attribute>
+            </xsl:if>
+            <xsl:if test="@backLink">
+              <xsl:attribute name="name"><xsl:value-of select="@backLink"/></xsl:attribute>
+            </xsl:if>
+            <xsl:value-of select="@title" /> 
+          </a>
+          <span> <xsl:value-of select="@page" /> </span>
+        </div>
+      </xsl:if>
+      <ul class="sublevels">
+        <xsl:comment>added to prevent self-closing tags in QtXmlPatterns</xsl:comment>
+        <xsl:apply-templates select="outline:item"/>
+      </ul>
+    </li>
+  </xsl:template>
+</xsl:stylesheet>
+WIKIDOC TOCXSL -->
+
+<!-- end of wikidoc config section -->
+
+<h1>Home</h1>
+
+<p>Only this text is shown on the wiki homepage. Since the title of this wiki file (Home) is not part of the file itself (the github wiki generates it from the filename), it would be missing in the pdf. To overcome this, the WIKIDOC PDFONLY comment can be used: The content of this comment is actually rendered in the PDF and the placeholder ###<em>WIKIDOC_TITLE</em>### is replaced by a title generated from the filename in the same way the github wiki is doing it. However, you are free to choose a different name for the pdf and/or a different header-level (h2, h3 ...), or leave it out completely.</p>
+<p>The WIKIDOC PDFONLY comment can be used in all wiki files, not just the wiki home file.</p>
+
+<h1 id="big-changes">Big changes</h1>
+<ul>
+<li>Node.js 4 is no longer supported. Source Code was upgraded to a higher ecmascript version.</li>
+<li>You have to choose (<code>mode</code> or <code>--mode</code>) between two modes now: production or development
+<ul>
+<li>production enables all kind of optimizations to generate optimized bundles</li>
+<li>development enables comments and hint for development and enables the eval devtool
+<ul>
+<li>WIP: addition hints in development mode</li>
+</ul></li>
+<li>production doesn't support watching, development is optimized for fast incremental rebuilds</li>
+<li>production also enables module concatenating (Scope Hoisting)</li>
+<li>You can configure this in detail with the flags in <code>optimization.*</code> (build your custom mode)</li>
+<li><code>process.env.NODE_ENV</code> are set to production or development (only in build code, not in config)</li>
+<li>There is a hidden <code>none</code> mode which disables everything</li>
+</ul></li>
+<li><code>import()</code> returns always a namespace object. CommonJS modules are wrapped into the default export
+<ul>
+<li>This probably breaks your code, if you used to import CommonJs with <code>import()</code></li>
+</ul></li>
+<li>You no longer need to use these plugins:
+<ul>
+<li><code>NoEmitOnErrorsPlugin</code> -&gt; <code>optimize.noEmitOnErrors</code> (on by default in production mode)</li>
+<li><code>ModuleConcatenationPlugin</code> -&gt; <code>optimize.concatenateModules</code> (on by default in production mode)</li>
+</ul></li>
+<li>webpack now handles JSON different
+<ul>
+<li>You may need to add <code>type: &quot;javascript/esm&quot;</code> when transforming JSON via loader to JS</li>
+<li>Just using JSON without loader should still work</li>
+</ul></li>
+</ul>
+<h1 id="big-features">Big features</h1>
+<ul>
+<li>webpack now supports these module types:
+<ul>
+<li>javascript/auto: (The default one in webpack 3) Javascript module with all module systems enabled: CommonJS, AMD, ESM</li>
+<li>javascript/esm: EcmaScript modules, all other module system are not available</li>
+<li>json: JSON data, JSON data is passed through unchanged and isn't parsed</li>
+<li>webassembly/experimental: WebAssembly modules (currently experimental)</li>
+</ul></li>
+<li><code>javascript/esm</code> handles ESM more strict compared to <code>javascript/auto</code>:
+<ul>
+<li>Imported names need to exist on imported module</li>
+<li>Non-ESM can only imported via <code>default</code> import, everything else (including namespace import) emit errors</li>
+</ul></li>
+<li>In <code>.mjs</code> modules
+<ul>
+<li><code>javascript/esm</code> is used</li>
+<li>imports need to have an extension. No extensions are tried.</li>
+</ul></li>
+<li><code>sideEffects: false</code> is now supported in package.json</li>
+<li>Instead of a JSONP function a JSONP array is used -&gt; async support
+<ul>
+<li>WIP: There is no way to move runtime to another chunk yet</li>
+</ul></li>
+<li><code>webpackInclude</code> and <code>webpackExclude</code> are supported by the magic comment for <code>import()</code>. They allow to filter files when using a dynamic expression.</li>
+<li>Resolving can now be configured with <code>module.rules[].resolve</code>. It's merged with the global configuration.</li>
+<li>Sone Plugin options are now validated
+<ul>
+<li>WIP: Better output, no process exit, stack trace, more plugins</li>
+</ul></li>
+<li>Multiple performance improvements, especially for faster incremental rebuilds
+<ul>
+<li>WIP:</li>
+</ul></li>
+</ul>
+<h1 id="features">Features</h1>
+<ul>
+<li>Plugins added via CLI are prepended to take priority over config plugins</li>
+<li>Module type is automatically choosen for mjs, json and wasm extensions. Other extensions need to be configured via module.rules[].type</li>
+<li>added <code>loaderContext.rootContext</code> which points to the <code>context</code> options. Loaders may use it to make stuff relative to the application root.</li>
+<li>Error for chunk loading now includes more information and two new properties <code>type</code> and <code>request</code>.</li>
+<li>Incorrect <code>options.dependencies</code> configurations now throw error</li>
+<li>webpacks AST can be passed directly from loader to webpack to avoid extra parsing</li>
+<li>When using more than 25 exports mangled export names are shorter.</li>
+<li>webpack now looks for the <code>.wasm</code>, <code>.mjs</code>, <code>.js</code> and <code>.json</code> extensions in this order</li>
+<li>Sizes are now shown in kiB instead of kB in Stats</li>
+<li>A resource query is supported in context</li>
+<li><code>output.pathinfo</code> is now on by default in develoment mode</li>
+<li>in-memory caching is now off by default in production</li>
+<li>script tags are no longer <code>text/javascript</code> and <code>async</code> as this are the default values (saves a few bytes)</li>
+</ul>
+<h1 id="bugfixes">Bugfixes</h1>
+<ul>
+<li>Generated comments no longer break on <code>*/</code></li>
+<li>webpack no longer modifies the passed options object</li>
+<li>Compiler &quot;watch-run&quot; hook not has the Compiler as first parameter</li>
+<li>add <code>chunkCallbackName</code> to the schema to allow configurating WebWorker template</li>
+</ul>
+<h1 id="removed-features">Removed features</h1>
+<ul>
+<li>removed <code>module.loaders</code></li>
+<li>removed <code>loaderContext.options</code></li>
+<li>removed <code>Compilation.notCacheable</code> flag</li>
+<li>removed <code>NoErrorsPlugin</code></li>
+<li>removed <code>Dependency.isEqualResource</code></li>
+<li>removed <code>NewWatchingPlugin</code></li>
+</ul>
+<h1 id="breaking-changes-for-plugins">Breaking changes for plugins</h1>
+<ul>
+<li>new plugin system
+<ul>
+<li><code>plugin</code> method is backward-compatible</li>
+<li>Plugins should use <code>Compiler.hooks.xxx.tap(&lt;plugin name&gt;, fn)</code> now</li>
+</ul></li>
+<li>New major version of enhanced-resolve</li>
+<li>Templates for chunks may now generate multiple assets</li>
+<li><code>Chunk.chunks/parents/blocks</code> are no longer Arrays. A Set is used internally and there are methods to access it.</li>
+<li><code>Parser.scope.renames</code> and <code>Parser.scope.definitions</code> are no longer Objects/Arrays, but Map/Sets.</li>
+<li>Parser uses <code>StackedSetMap</code> (LevelDB-like datastructure) instead of Arrays</li>
+<li><code>Compiler.options</code> is no longer set while applying plugins</li>
+<li>Harmony Dependencies has changed because of refactoring</li>
+<li><code>Dependency.getReference()</code> may now return a <code>weak</code> property. <code>Dependency.weak</code> is now used by the <code>Dependency</code> base class and returned in the base impl of <code>getReference()</code></li>
+<li>Constructor arguments changed for all <code>Module</code>s</li>
+<li>Merged options into options object for <code>ContextModule</code> and <code>resolveDependencies</code></li>
+<li>Changed and renamed dependencies for `import()</li>
+<li>Moved <code>Compiler.resolvers</code> into <code>Compiler.resolverFactory</code> accessible with plugins</li>
+<li><code>Dependency.isEqualResource</code> has been replaced with <code>Dependency.getResourceIdentifier</code></li>
+</ul>
+<h1 id="todo">TODO</h1>
+<hr />
+<h1 id="big-features-1">Big features</h1>
+<ul>
+<li>Upgrade uglifyjs-webpack-plugin to v1</li>
+<li>production mode now minimizes by default</li>
+<li><code>optimization.minimize</code> has been added</li>
+<li><code>optimization.minimizer</code> has been added to configurate minimizers and options</li>
+<li>CLI has been move to webpack-cli, you need to install <code>webpack-cli</code> to use the CLI</li>
+<li>The ProgressPlugin (<code>--progress</code>) now displays plugin names</li>
+</ul>
+<h1 id="features-1">Features</h1>
+<ul>
+<li>Parser now understand <code>new Foo()</code> expressions</li>
+<li>Parser can now evaluate <code>**</code>, <code>&amp;</code>, <code>|</code>, <code>^</code>, <code>&gt;&gt;&gt;</code>, <code>&gt;&gt;</code>, <code>&lt;&lt;</code> and <code>~</code></li>
+<li><code>Rule.ident</code> is not allowed by schema</li>
+<li>constant replacements now don't need <code>__webpack_require__</code> and argument is omitted</li>
+<li>The concatenated module now generates a bit less code</li>
+</ul>
+<h1 id="breaking-changes-for-plugin-authors">Breaking changes for Plugin authors</h1>
+<ul>
+<li>Methods on <code>Template</code> are now static</li>
+<li>A new RuntimeTemplate class has been added and <code>outputOptions</code> and <code>requestShortener</code> has been moved to this class
+<ul>
+<li>Many methods has been updated to use the RuntimeTemplate instead</li>
+<li>We plan to move code which accesses the runtime to this new class</li>
+</ul></li>
+<li><code>Module.meta</code> has been replaced with <code>Module.buildMeta</code></li>
+<li><code>Module.buildInfo</code> and <code>Module.factoryMeta</code> have been added</li>
+<li>Some properties of <code>Module</code> have been moved into the new objects</li>
+</ul>
+
+<h1 id="moved-to-webpackdocs"><a href="http://webpack.github.io/docs/changelog.html">moved to webpack/docs</a></h1>
+
+<h1 id="moved"><a href="https://github.com/webpack/docs/wiki/webpack-comparison">moved</a></h1>
+
+<p><strong>Here is how webpack works?</strong></p>
+<p>This document is only a overview. It may not features all steps of webpack.</p>
+<h2 id="syntax">Syntax</h2>
+<pre><code>+ Some kind of data
+| Some kind of action
+|&gt; Some kind of call action, see other pseudo code fragment
+=== Some kind of loop/conditional
+</code></pre>
+<p>I may draw some pictures soon...</p>
+<h2 id="overview">Overview</h2>
+<pre><code>main(entry module)
+ 
+| fill default options
+=== if options.watch
+  | create cache if not provided
+  === on file change, on &quot;invalid&quot; event
+    | emit &quot;bundle-invalid&quot; event
+    |&gt; build()
+|&gt; build()
+</code></pre>
+<pre><code>build(entry module)
+
+|&gt; build-dependency-tree()
++ depTree
+=== foreach chunk in depTree
+  | add content to hash
+  | write chunk template
+  |&gt; write-chunk-content()
+  | [if options.minimize] minimize file
+  | add file to emitted files
+| emit &quot;start-writing&quot; event
+=== if not options.noWrite
+  | create output directory if not existing
+  | write out emitted files
+| create stats object
+| emit &quot;bundle&quot; event and call callback
+</code></pre>
+<pre><code>build-dependency-tree(entry module)
+
+| init depTree
++ depTree
+|&gt; add-module(entry module)
+|&gt; create-chunk(entry module)
+| create ids for modules
+=== foreach chunk in depTree
+  | remove modules that are in all parent chunks
+  | [if empty] remove chunk
+  | [if same as other chunk] remove chunk
+| create ids for chunks
+| return depTree
+</code></pre>
+<h2 id="add-module">Add module</h2>
+<pre><code>add-module(module)
+
++ require string, context
+|&gt; resolve(require string)
++ loaders, filename
+=== if module exists in depTree
+  | add require reason
+  | return module.id
+| create module in depTree
+=== if module is not in cache or invalid
+  | read file
+  + file content
+  | match pre and post loaders
+  |&gt; resolve(pre and post loaders)
+  + pre and post loaders filenames
+  |&gt; execute-loaders(pre loaders)
+  |&gt; execute-loaders(loaders)
+  |&gt; execute-loaders(post loaders)
+  + js result
+  |&gt; parse(js result)
+  | [if options.cache] store to cache
++ js content, requires, async contexts
+|&gt; foreach require in requires: add-module(require)
+|&gt; foreach require.context in requires: add-context-module(content)
++ js content
+| return module.id;
+</code></pre>
+<h2 id="resolve">resolve</h2>
+<pre><code>resolve(context, identifier)
+
+| split identifier at &quot;!&quot;
++ loaders, resource
+|&gt; resolveItem(context, resource)
+| [if identifier not contains &quot;!&quot;] match and set default loaders
+|&gt; foreach loader in loaders: resolveItem(context, loader)
+| join resolved loaders and resolved resource
+| foreach preprocessor in preprocessors: exec preprocessor
+| return result
+</code></pre>
+<pre><code>resolveItem(context, identifier)
+
+| split context and identifier at &#39;/&#39; or &#39;\\&#39;
+=== while identifier[0] in options alias
+  | remove identifier[0]
+  | unshift splitted alias
+=== if identifer begins with a module
+  |&gt; load-as-module()
+=== else
+  | join context with identifier oder use identifier if absolute
+  + pathname
+  === if it was a require.context
+    | fail if pathname is not directory
+    | return pathname
+  === else
+    |&gt; load-as-file-or-directory()
+</code></pre>
+<pre><code>load-as-module()
+
+|&gt; get-paths-and-modules-directory()
++ possible paths
+=== foreach path in possible paths (in order)
+  === foreach postfix in options.[loader]postfixes (in order)
+    | join path + module name + postfix + remaining identifier
+    + pathname
+    === if it was a require.context
+      | fail if pathname is not directory
+      | return pathname
+    === else
+      |&gt; load-as-file-or-directory()
+</code></pre>
+
+<h1 id="deprecated">DEPRECATED!!!</h1>
+<p>see <a href="http://webpack.github.io/docs/loaders.html" class="uri">http://webpack.github.io/docs/loaders.html</a>!</p>
+<h1 id="loader-specification">Loader Specification</h1>
+<h2 id="require-syntax">require syntax</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="at">require</span>(<span class="st">&quot;./file.js&quot;</span>)<span class="op">;</span> <span class="co">// no loader used</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="at">require</span>(<span class="st">&quot;loaderA!./file.js&quot;</span>)<span class="op">;</span> <span class="co">// &quot;loaderA&quot; is used</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="at">require</span>(<span class="st">&quot;loader3!loader2!first-loader!./file.js&quot;</span>)<span class="op">;</span> </a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">     <span class="co">// file.js is process by first-loader, loader2 and loader3 in this order</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="at">require</span>(<span class="st">&quot;./file.jade&quot;</span>)<span class="op">;</span> <span class="co">// some configured extensions automatically use loaders</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="at">require</span>(<span class="st">&quot;!./file.jade&quot;</span>)<span class="op">;</span> <span class="co">// this can be overwritten by a leading &quot;!&quot;</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="at">require</span>(<span class="st">&quot;./myloader!loaderA/folder/abc!./file.js&quot;</span>)<span class="op">;</span> <span class="co">// files and folders possible</span></a></code></pre></div>
+<p>with webpack 0.8 queries are added:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="at">require</span>(<span class="st">&quot;loaderA?query!./file.js?another-query&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<p>Queries can be any string not containing <code>!</code>. They are passed to the loader.</p>
+<h2 id="resolve">resolve</h2>
+<p>loader &quot;xyz&quot; resolve to the package: (in this order)</p>
+<ul>
+<li><code>xyz-vendor-web-loader</code></li>
+<li><code>xyz-vendor-loader</code></li>
+<li><code>xyz-web-loader</code></li>
+<li><code>xyz-loader</code></li>
+<li><code>xyz</code></li>
+</ul>
+<p>And &quot;./abc&quot; as loader resolve to the file: (in this order)</p>
+<ul>
+<li><code>abc.vendor-web-loader.js</code></li>
+<li><code>abc.vendor-loader.js</code></li>
+<li><code>abc.web-loader.js</code></li>
+<li><code>abc.loader.js</code></li>
+<li><code>abc.js</code></li>
+<li><code>abc</code></li>
+</ul>
+<p><code>package.json</code> can contain a field <code>loader</code> which overwrites the used file in a package. Elsewise <code>index</code> is used and resolved like a file (above &quot;./index&quot;)</p>
+<p>vendor is a module system specific name, in example <code>webpack</code> for webpack.</p>
+<h2 id="loader-module">loader module</h2>
+<p>A loader module MUST export a function (called loader function).</p>
+<p>The loader function will be called by the module system with one or more arguments. The module system provides a this context to the loader function with additional data.</p>
+<table>
+
+<tr>
+<td><code>this.request</code> string</td>
+<td>required</td>
+<td>the resolved request which results in querying the loader</td>
+</tr>
+
+<tr>
+<td><code>this.async</code> function()</td>
+<td>required</td>
+<td>call it if you offer a asynchron behavior in your loader. It returns a function if the module system supports this. Call the function with (err, arg1, arg2, ...) if you are done. Fallback to synchron behavior if it returns <code>null</code>, <code>false</code> or <code>undefined</code>.</td>
+</tr>
+
+<tr>
+<td><code>this.callback</code> function()</td>
+<td>required</td>
+<td>use this function to return multiple return values from your loader. Call it with (err, arg1, arg2, ...).</td>
+</tr>
+
+<tr>
+<td><code>this.options</code> object</td>
+<td>required</td>
+<td>options of the module system. A loader may claim a member of options for own options.</td>
+</tr>
+
+<tr>
+<td><code>this.context</code> string</td>
+<td>optional</td>
+<td>The path from which this request comes from. Can be used for more resolving.</td>
+</tr>
+
+<tr>
+<td><code>this.web</code> boolean</td>
+<td>optional</td>
+<td><code>true</code>, if target is a browser</td>
+</tr>
+
+<tr>
+<td><code>this.filenames</code> string[]</td>
+<td>optional</td>
+<td>the files providing the content of the arguments to the loader</td>
+</tr>
+
+<tr>
+<td><code>this.query</code> string</td>
+<td>optional</td>
+<td>the query passed for this loader</td>
+</tr>
+
+<tr>
+<td><code>this.resourceQuery</code> string</td>
+<td>optional</td>
+<td>the query passed for the resource</td>
+</tr>
+
+<tr>
+<td><code>this.debug</code> boolean</td>
+<td>optional</td>
+<td><code>true</code>, if loader should emit debug info</td>
+</tr>
+
+<tr>
+<td><code>this.minimize</code> boolean</td>
+<td>optional</td>
+<td><code>true</code>, if loader should minimize its output (except javascript)</td>
+</tr>
+
+<tr>
+<td><code>this.resolve</code> function(context, path, callback)</td>
+<td>optional</td>
+<td>resolves a path in a context and callback is called with (err, absoluteFilename)</td>
+</tr>
+
+<tr>
+<td><code>this.values</code></td>
+<td>optional</td>
+<td>A loader may write an array into this member which contains the result of execution of its returning javascript code.</td>
+</tr>
+
+<tr>
+<td><code>this.inputValues</code> array</td>
+<td>optional</td>
+<td>if set it contains the <code>this.values</code> of the last loader. Item X should equal to <code>this.exec(argX)</code>, but a loader can use it for performance reasons.</td>
+</tr>
+
+<tr>
+<td><code>this.exec</code> function(code, filenameOfCode)</td>
+<td>optional</td>
+<td>Executes javascript code like a module and returns the exports.</td>
+</tr>
+
+<tr>
+<td><code>this.buffers</code> Buffer[]</td>
+<td>optional</td>
+<td>The arguments of the loader as <code>Buffer</code>s. This is useful if the file is not a text file.</td>
+</tr>
+
+<tr>
+<td><code>this.emitFile</code> function(filename, content)</td>
+<td>optional</td>
+<td>Emits a file to the output. <code>content</code> may be a Buffer or a string, which is emitted as utf-8.</td>
+</tr>
+
+<tr>
+<td><code>this.cacheable</code> function(flag = true)</td>
+<td>optional</td>
+<td>Flag the output of the loader as cacheable (or not cachable). Loader must call this.dependency() if it has more dependencies that its arguments.</td>
+</tr>
+
+<tr>
+<td><code>this.dependency</code> function(filename)</td>
+<td>optional</td>
+<td>Add a dependency. If the loader is cacheable the cached version will not longer be used if the dependency has changed (timestamp). Additionally it's required for watch mode.</td>
+</tr>
+
+<tr>
+<td><code>this.clearDependencies</code> function()</td>
+<td>optional</td>
+<td>Removes all dependencies from the loader, including arguments.</td>
+</tr>
+
+<tr>
+<td><code>this.loaderType</code> string</td>
+<td>optional</td>
+<td>"loader", "preLoader", or "postLoader". The type of the current loader.</td>
+</tr>
+
+<tr>
+<td><code>this.currentLoaders</code> string[]</td>
+<td>optional</td>
+<td>The list of loaders of the current loader type.</td>
+</tr>
+
+<tr>
+<td><code>this.loaderIndex</code> number</td>
+<td>optional</td>
+<td>The index of the loader currently executed.</td>
+</tr>
+
+<tr>
+<td><code>this.loaders</code> string[]</td>
+<td>optional</td>
+<td>The list of loaderss which are applied to the current file.</td>
+</tr>
+
+<tr>
+<td><code>this.preLoaders</code> string[]</td>
+<td>optional</td>
+<td>The list of preLoaders which are applied to the current file.</td>
+</tr>
+
+<tr>
+<td><code>this.postLoaders</code> string[]</td>
+<td>optional</td>
+<td>The list of postLoaders which are applied to the current file.</td>
+</tr>
+
+<tr>
+<td>more</td>
+<td>optional</td>
+<td>A module system may provide more members</td>
+</tr>
+
+</table>
+
+<h2 id="loader-options">loader options</h2>
+<p>Beside the loader function, a loader can export options to the module system.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> <span class="kw">function</span>(...) <span class="op">{</span> ... <span class="op">};</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="va">module</span>.<span class="va">exports</span>.<span class="at">option1</span> <span class="op">=</span> value1<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="va">module</span>.<span class="va">exports</span>.<span class="at">option2</span> <span class="op">=</span> value2<span class="op">;</span></a></code></pre></div>
+<h3 id="separable"><code>separable</code></h3>
+<p>(Boolean) default = false</p>
+<p>Flag a loader as separable. This means it can run separate from the module system and other loaders. I. e. in a separate process. A module system may do this for performance reasons.</p>
+<h3 id="separableifresolve"><code>separableIfResolve</code></h3>
+<p>(Boolean default = false</p>
+<p>Like <code>separable</code> but only valid if resolving is allowed in separate process.</p>
+
+<h1 id="moved-to-webpackdocs"><a href="http://webpack.github.io/docs/webpack-plugins.html">moved to webpack/docs</a></h1>
+
+<h1 id="lazy-pages">Lazy Pages</h1>
+<h2 id="structure">Structure</h2>
+<pre class="text"><code>~ lib
++-- app.js
++-~ pages
+  +-- home.js
+  +-- some-stuff.js
+  +-- other-stuff.js
+</code></pre>
+<h2 id="page-loading-code">Page loading code</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">function</span> <span class="at">createPage</span>(name<span class="op">,</span> callback) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="cf">try</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="co">// use the &quot;bundle/lazy&quot; loader combined with a context to</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="co">// make pages load on demand</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="at">require</span>(<span class="st">&quot;bundle/lazy!./pages/&quot;</span> <span class="op">+</span> name)(<span class="kw">function</span>(Page) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">      <span class="co">// create a instance of the loaded Page</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">      <span class="cf">return</span> <span class="at">callback</span>(<span class="kw">new</span> <span class="at">Page</span>())<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  <span class="op">}</span> <span class="cf">catch</span>(e) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="co">// no Page for this name exists</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    <span class="cf">return</span> <span class="at">callback</span>(<span class="kw">null</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="op">}</span></a></code></pre></div>
+<p>TODO: change <code>&quot;bundle/lazy&quot;</code> to <code>&quot;bundle?lazy&quot;</code> for 0.8</p>
+
+<h1 id="localization">Localization</h1>
+<h2 id="structure">Structure</h2>
+<pre class="text"><code>+-- webpackConfig.js
++-~ lib
+  +-- app.js
+  +-- stuff.js
++-~ nls
+  +-- app.json
+  +-- de.app.json
+  +-- stuff.json
+  +-- de.stuff.json
+  +-- jp.stuff.json
+</code></pre>
+<h2 id="webpackconfigjs">webpackConfig.js</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">var</span> path <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;path&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="dt">resolve</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="dt">alias</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">      <span class="co">// [optional] this makes your requires looks nicer</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">      <span class="st">&quot;nls&quot;</span><span class="op">:</span> <span class="va">path</span>.<span class="at">join</span>(__dirname<span class="op">,</span> <span class="st">&quot;nls&quot;</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  <span class="dt">i18n</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="co">// This is required if your don&#39;t have all used languages</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    <span class="co">// in the first used i18n module</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    <span class="dt">locales</span><span class="op">:</span> [<span class="st">&quot;de&quot;</span><span class="op">,</span> <span class="st">&quot;jp&quot;</span>]</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="op">}</span></a></code></pre></div>
+<h2 id="lib">lib</h2>
+<h3 id="libappjs">lib/app.js</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co">// start you app by require any of the localization files</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">// this is asynchron and do a request to the correct locale</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">// all stuff of one language is requested in a single request</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">var</span> i18n <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;i18n!nls/app.json&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">// [optional] load all other stuff of your app async</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="va">require</span>.<span class="at">ensure</span>([]<span class="op">,</span> <span class="kw">function</span>(require) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="co">// ensure that the locale is loaded</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="co">// after it&#39;s loaded all require(&quot;i18n... is sync</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="at">i18n</span>(<span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="co">// bootstrap logic which can use i18n synchron</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    <span class="at">alert</span>(<span class="va">i18n</span>.<span class="at">helloMessage</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="at">require</span>(<span class="st">&quot;./stuff&quot;</span>).<span class="at">start</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3 id="libstuffjs">lib/stuff.js</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co">// This is even synchron if you require another file</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">// as all language specific file are in one chunk</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">var</span> i18n <span class="op">=</span> <span class="at">require</span>(<span class="st">&quot;i18n!nls/stuff.json&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="va">exports</span>.<span class="at">start</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">  <span class="at">alert</span>(<span class="va">i18n</span>.<span class="at">test2</span> <span class="op">+</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span> <span class="op">+</span> <span class="va">i18n</span>.<span class="at">testMessage</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="op">}</span></a></code></pre></div>
+<h2 id="nls">nls</h2>
+<h3 id="nlsmainjson">nls/main.json</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="op">{</span> <span class="st">&quot;helloMessage&quot;</span><span class="op">:</span> <span class="st">&quot;Hello World&quot;</span> <span class="op">}</span></a></code></pre></div>
+<h3 id="nlsdemainjson">nls/de.main.json</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="op">{</span> <span class="st">&quot;helloMessage&quot;</span><span class="op">:</span> <span class="st">&quot;Hallo Welt&quot;</span> <span class="op">}</span></a></code></pre></div>
+<h3 id="nlsstuffjson">nls/stuff.json</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="st">&quot;testMessage&quot;</span><span class="op">:</span> <span class="st">&quot;This is a test&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="st">&quot;test2&quot;</span><span class="op">:</span> <span class="st">&quot;test2&quot;</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="op">}</span></a></code></pre></div>
+<h3 id="nlsdestuffjson">nls/de.stuff.json</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="op">{</span> <span class="st">&quot;testMessage&quot;</span><span class="op">:</span> <span class="st">&quot;Das ist ein Test&quot;</span> <span class="op">}</span></a></code></pre></div>
+<p><code>test2</code> is not included here so it will fallback to the parent locale <code>stuff.json</code></p>
+
+<h1 id="recipes">Recipes</h1>
+<h1 id="lazy-pagesrecipe-lazy-pages">[Lazy Pages](Recipe Lazy Pages)</h1>
+<p>You have your web app organized into different pages and want them load on demand.</p>
+<h1 id="localizationrecipe-localization">[Localization](Recipe Localization)</h1>
+<p>Want to support multiple languages (maybe want to load them on demand).</p>
+
+<h1 id="moved-to-webpackdocs"><a href="https://github.com/webpack/docs/wiki/TODO">moved to webpack/docs</a></h1>
+
+<h1 id="this-is-old---head-over-to-httpwebpackgithubiodocs">THIS IS OLD -&gt; head over to <a href="http://webpack.github.io/docs/" class="uri">http://webpack.github.io/docs/</a></h1>
+
+</body>
+</html>
